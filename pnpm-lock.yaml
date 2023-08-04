@@ -17,6 +17,7 @@ specifiers:
   eslint-config-prettier: ^8.8.0
   eslint-plugin-prettier: ^4.2.1
   jest: ^29.5.0
+  lodash: ^4.17.21
   prettier: ^2.8.8
   reflect-metadata: ^0.1.13
   rxjs: ^7.8.1
@@ -32,6 +33,7 @@ dependencies:
   '@nestjs/common': 10.1.3_atc7tu2sld2m3nk4hmwkqn6qde
   '@nestjs/core': 10.1.3_cbm7sg5efqqar7ntuqguk4rlum
   '@nestjs/platform-express': 10.1.3_yxajjqzwuyac646uxsfhswdv24
+  lodash: 4.17.21
   reflect-metadata: 0.1.13
   rxjs: 7.8.1
 
@@ -3616,7 +3618,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}

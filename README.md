@@ -14,3 +14,4 @@
 5 - START WRITING TESTS
 
 > Simple tests : differents books
+> Simple tests : identical books
