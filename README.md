@@ -19,3 +19,13 @@
 
 > [!NOTE]  
 > Of course, all tests are failing until now.
+
+6 - Write the solution
+
+> [!NOTE]  
+> We could remove switch and define discount as array
+
+> [!WARNING]  
+> Something goes wrong, a test fail: 
+    Expected: 184.4
+    Received: 184.39999999999998
