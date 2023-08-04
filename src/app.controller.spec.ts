@@ -7,6 +7,10 @@ import * as _ from 'lodash';
 describe('AppController', () => {
   let appController: AppController;
 
+  const mapTimes = (iteration: number, values: Array<Book> | Book) => {
+    return _.times(iteration, () => values);
+  };
+
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
@@ -63,8 +67,8 @@ describe('AppController', () => {
 
     describe('Simple Case: Test identical Books', () => {
       it('Case: many identical BOOKS"', () => {
-        const booksExample1 = _.times(10, Book.FIRST);
-        const booksExample2 = _.times(5, Book.FIFTH);
+        const booksExample1 = mapTimes(10, Book.FIRST);
+        const booksExample2 = mapTimes(5, Book.FIFTH);
         const priceExample1 = PRICE * 10;
         const priceExample2 = PRICE * 5;
 
@@ -73,8 +77,63 @@ describe('AppController', () => {
       });
     });
 
-    // describe('Complex Case: Test all books cases', () => {
+    describe('Complex Case: Test all books cases', () => {
+      it('Case: 4 identicals books and 2 others"', () => {
+        const booksExample = [mapTimes(4, Book.FIRST), Book.SECOND, Book.THIRD];
 
-    // });
+        const price = PRICE * 3 * Discount.THREEBOOKS + PRICE * 3;
+
+        expect(appController.calculatePrice(booksExample)).toBe(price);
+      });
+
+      it('Case: 2 identicals books and 4 others"', () => {
+        const booksExample = [
+          Book.FIRST,
+          mapTimes(2, Book.SECOND),
+          Book.THIRD,
+          Book.FOURTH,
+          Book.FIFTH,
+        ];
+
+        const price = PRICE * 5 * Discount.ALLBOOKS + PRICE;
+
+        expect(appController.calculatePrice(booksExample)).toBe(price);
+      });
+
+      it('Case: 3 sets of identicals books and 2 others"', () => {
+        const booksExample = [
+          mapTimes(10, Book.FIRST),
+          mapTimes(8, Book.SECOND),
+          mapTimes(6, Book.THIRD),
+          Book.FOURTH,
+          Book.FIFTH,
+        ];
+
+        const price =
+          PRICE * 5 * Discount.ALLBOOKS * 1 +
+          PRICE * 3 * Discount.THREEBOOKS * 5 +
+          PRICE * 2 * Discount.TWOBOOKS * 2 +
+          PRICE * 2;
+
+        expect(appController.calculatePrice(booksExample)).toBe(price);
+      });
+
+      it('Case: 5 sets of identicals books"', () => {
+        const booksExample = [
+          mapTimes(1, Book.FIRST),
+          mapTimes(4, Book.SECOND),
+          mapTimes(2, Book.THIRD),
+          mapTimes(16, Book.FIFTH),
+        ];
+
+        const price =
+          PRICE * 4 * Discount.FOURBOOKS * 1 +
+          PRICE * 3 * Discount.THREEBOOKS * 1 +
+          PRICE * 2 * Discount.TWOBOOKS * 2 +
+          PRICE * 12;
+
+        expect(appController.calculatePrice(booksExample)).toBe(price);
+      });
+    });
   });
 });
