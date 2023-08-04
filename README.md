@@ -8,3 +8,5 @@
 ```
   pnpm t
 ```
+
+4 - Now we should describe types (book, list books)
