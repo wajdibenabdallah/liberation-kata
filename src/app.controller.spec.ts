@@ -19,4 +19,9 @@ describe('AppController', () => {
       expect(appController.getHello()).toBe('Hello World!');
     });
   });
+  describe('Test Function calculatePrice', () => {
+    it('should return null"', () => {
+      expect(appController.calculatePrice()).toBe(null);
+    });
+  });
 });
