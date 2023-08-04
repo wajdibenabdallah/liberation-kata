@@ -10,3 +10,7 @@
 ```
 
 4 - Now we should describe types (book, list books)
+
+5 - START WRITING TESTS
+
+> Simple tests : differents books

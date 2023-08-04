@@ -5,3 +5,12 @@ export enum Book {
   FOURTH = 4,
   FIFTH = 5,
 }
+
+export const PRICE = 8;
+
+export enum Discount {
+  TWOBOOKS = 0.95,
+  THREEBOOKS = 0.9,
+  FOURBOOKS = 0.8,
+  ALLBOOKS = 0.75,
+}

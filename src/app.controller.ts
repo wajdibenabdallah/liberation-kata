@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Book } from './types';
 
 @Controller()
 export class AppController {
@@ -11,7 +12,7 @@ export class AppController {
   }
 
   @Get()
-  calculatePrice(): number {
-    return this.appService.calculatePrice();
+  calculatePrice(books: Book[]): number {
+    return this.appService.calculatePrice(books);
   }
 }
