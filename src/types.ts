@@ -8,10 +8,4 @@ export enum Book {
 
 export const PRICE = 8;
 
-export enum Discount {
-  ONEBOOK = 1,
-  TWOBOOKS = 0.95,
-  THREEBOOKS = 0.9,
-  FOURBOOKS = 0.8,
-  ALLBOOKS = 0.75,
-}
+export const DISCOUNT = [, 1, 0.95, 0.9, 0.8, 0.75];

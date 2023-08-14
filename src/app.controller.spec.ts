@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Book, Discount, PRICE } from './types';
+import { Book, DISCOUNT, PRICE } from './types';
 import * as _ from 'lodash';
 
 describe('AppController', () => {
@@ -32,7 +32,7 @@ describe('AppController', () => {
       it('Case: 2 BOOKS"', () => {
         const booksExample1 = [Book.FOURTH, Book.FIFTH];
         const booksExample2 = [Book.THIRD, Book.SECOND];
-        const price = PRICE * 2 * Discount.TWOBOOKS;
+        const price = PRICE * 2 * DISCOUNT[2];
 
         expect(appController.calculatePrice(booksExample1)).toBe(price);
         expect(appController.calculatePrice(booksExample2)).toBe(price);
@@ -40,14 +40,14 @@ describe('AppController', () => {
       it('Case: 3 BOOKS"', () => {
         const booksExample1 = [Book.FOURTH, Book.FIFTH, Book.FIRST];
         const booksExample2 = [Book.THIRD, Book.SECOND, Book.FIRST];
-        const price = PRICE * 3 * Discount.THREEBOOKS;
+        const price = PRICE * 3 * DISCOUNT[3];
 
         expect(appController.calculatePrice(booksExample1)).toBe(price);
         expect(appController.calculatePrice(booksExample2)).toBe(price);
       });
       it('Case: 4 BOOKS"', () => {
         const booksExample = [Book.FOURTH, Book.FIFTH, Book.FIRST, Book.SECOND];
-        const price = 8 * 4 * Discount.FOURBOOKS;
+        const price = 8 * 4 * DISCOUNT[4];
 
         expect(appController.calculatePrice(booksExample)).toBe(price);
       });
@@ -59,7 +59,7 @@ describe('AppController', () => {
           Book.FOURTH,
           Book.FIFTH,
         ];
-        const price = 8 * 5 * Discount.ALLBOOKS;
+        const price = 8 * 5 * DISCOUNT[5];
 
         expect(appController.calculatePrice(booksExample)).toBe(price);
       });
@@ -81,7 +81,7 @@ describe('AppController', () => {
       it('Case: 4 identicals books and 2 others"', () => {
         const booksExample = [mapTimes(4, Book.FIRST), Book.SECOND, Book.THIRD];
 
-        const price = PRICE * 3 * Discount.THREEBOOKS + PRICE * 3;
+        const price = PRICE * 3 * DISCOUNT[3] + PRICE * 3;
 
         expect(appController.calculatePrice(booksExample)).toBe(price);
       });
@@ -95,7 +95,7 @@ describe('AppController', () => {
           Book.FIFTH,
         ];
 
-        const price = PRICE * 5 * Discount.ALLBOOKS + PRICE;
+        const price = PRICE * 5 * DISCOUNT[5] + PRICE;
 
         expect(appController.calculatePrice(booksExample)).toBe(price);
       });
@@ -110,9 +110,9 @@ describe('AppController', () => {
         ];
 
         const price =
-          PRICE * 5 * Discount.ALLBOOKS * 1 +
-          PRICE * 3 * Discount.THREEBOOKS * 5 +
-          PRICE * 2 * Discount.TWOBOOKS * 2 +
+          PRICE * 5 * DISCOUNT[5] * 1 +
+          PRICE * 3 * DISCOUNT[3] * 5 +
+          PRICE * 2 * DISCOUNT[2] * 2 +
           PRICE * 2;
 
         expect(appController.calculatePrice(booksExample)).toBe(price);
@@ -127,9 +127,9 @@ describe('AppController', () => {
         ];
 
         const price =
-          PRICE * 4 * Discount.FOURBOOKS * 1 +
-          PRICE * 3 * Discount.THREEBOOKS * 1 +
-          PRICE * 2 * Discount.TWOBOOKS * 2 +
+          PRICE * 4 * DISCOUNT[4] * 1 +
+          PRICE * 3 * DISCOUNT[3] * 1 +
+          PRICE * 2 * DISCOUNT[2] * 2 +
           PRICE * 12;
 
         expect(appController.calculatePrice(booksExample)).toBe(price);
