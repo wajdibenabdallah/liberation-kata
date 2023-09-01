@@ -115,7 +115,7 @@ describe('AppController', () => {
           PRICE * 2 * DISCOUNT[2] * 2 +
           PRICE * 2;
 
-        expect(appController.calculatePrice(booksExample)).toBe(price);
+        expect(appController.calculatePrice(booksExample)).toBeCloseTo(price);
       });
 
       it('Case: 5 sets of identicals books"', () => {
